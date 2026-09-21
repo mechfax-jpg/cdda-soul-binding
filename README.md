@@ -1,7 +1,7 @@
 # SOUL BINDING
 
-Bind Essence lets you permanently stamp enchantments onto
-any worn item, for the low, low payment of some mana dust,
+Bind Essence lets you enchantment any worn item, 
+for the low, low payment of some mana dust,
 some gems, and a small part of your soul!
 
 ## REQUIREMENTS
