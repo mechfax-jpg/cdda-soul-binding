@@ -198,3 +198,12 @@ or take it off.
 Unsure if this is too powerful or if the gate of entry is too high.
 
 Feedback is welcome.
+
+LICENSE
+-------
+This mod is released under CC0 1.0 Universal.
+
+You are free to copy, modify, distribute, and use this work
+for any purpose without asking permission.
+
+https://creativecommons.org/publicdomain/zero/1.0/
