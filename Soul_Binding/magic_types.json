@@ -1,0 +1,13 @@
+[
+  {
+    "id": "mie_soul_magic",
+    "type": "magic_type",
+    "energy_source": "MANA",
+    "cannot_cast_flags": [
+      "NO_SPELLCASTING"
+    ],
+    "failure_cost_percent": 0.2,
+    "failure_chance_formula_id": "magiclysm_spell_failure_enhancement_formula",
+    "cannot_cast_message": "Something holds the working back."
+  }
+]

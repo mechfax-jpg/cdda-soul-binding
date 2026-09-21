@@ -1,0 +1,111 @@
+[
+  {
+    "type": "mutation",
+    "id": "MIE_SOUL_BRANDED",
+    "name": {
+      "str": "Soul-Branded"
+    },
+    "points": -3,
+    "description": "A permanent magical brand on your palm marks you as one who has traded a piece of their soul for the power to bind essences.  You are forever marked\u2014and forever weakened.  This is required to cast Bind Essence.",
+    "valid": false,
+    "purifiable": false,
+    "player_display": true,
+    "cancels": [],
+    "enchantments": [
+      "ench_mie_soul_branded_stats"
+    ]
+  },
+  {
+    "type": "enchantment",
+    "id": "ench_mie_soul_branded_stats",
+    "condition": "ALWAYS",
+    "values": [
+      {
+        "value": "STRENGTH",
+        "add": {
+          "math": [
+            "-2 - u_mie_soul_debt"
+          ]
+        }
+      },
+      {
+        "value": "DEXTERITY",
+        "add": {
+          "math": [
+            "-2 - u_mie_soul_debt"
+          ]
+        }
+      },
+      {
+        "value": "INTELLIGENCE",
+        "add": {
+          "math": [
+            "-2 - u_mie_soul_debt"
+          ]
+        }
+      },
+      {
+        "value": "PERCEPTION",
+        "add": {
+          "math": [
+            "-2 - u_mie_soul_debt"
+          ]
+        }
+      },
+      {
+        "value": "MAX_HP",
+        "add": {
+          "math": [
+            "-1 * u_mie_soul_debt * 2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PERFORM_BRANDING",
+    "effect": [
+      {
+        "u_consume_item": "page_mie_soul_brand",
+        "count": 1
+      },
+      {
+        "u_message": "The page catches fire in your hands without ever burning them, and the flame sinks straight into your palm, carving a sigil into the fabric of your being.",
+        "type": "bad"
+      },
+      {
+        "math": [
+          "u_pain() += 150"
+        ]
+      },
+      {
+        "u_add_trait": "MIE_SOUL_BRANDED"
+      },
+      {
+        "u_add_morale": "morale_mie_soul_scarred",
+        "bonus": -50,
+        "max_bonus": -50,
+        "duration": "336 hours"
+      },
+      {
+        "u_message": "The brand sears itself into your palm.  It feels... wrong.  But you can feel the essence of the world differently now.  You have unlocked the ability to bind magic into objects.",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECALC"
+      }
+    ],
+    "condition": {
+      "not": {
+        "u_has_trait": "MIE_SOUL_BRANDED"
+      }
+    },
+    "false_effect": [
+      {
+        "u_message": "The brand already marks you.  Nothing happens.",
+        "type": "bad"
+      }
+    ]
+  }
+]

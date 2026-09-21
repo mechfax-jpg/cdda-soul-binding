@@ -1,0 +1,1854 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CAST",
+    "effect": [
+      {
+        "run_eoc_selector": [
+          "EOC_MIE_CAST_PREFIX",
+          "EOC_MIE_CAST_SUFFIX",
+          "EOC_MIE_CAST_CAPSTONE",
+          "EOC_MIE_CAST_MARK"
+        ],
+        "names": [
+          "Minor Ward (prefix)",
+          "Major Working (suffix)",
+          "Capstone (level 15 only)",
+          "Mark (level 12 only)"
+        ],
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "title": "What kind of essence will you bind?",
+        "allow_cancel": true,
+        "descriptions": [
+          "Use Mana dust to bind a part of your soul into a item you are wearing (Prefix)",
+          "Use a gem and mana dust to bind a  into a item you are wearing [Suffix] ",
+          "Pledge a peice of your soul to gain great power at a price.*CAPSTONE*(level 15)",
+          "Bind a item with a mark of Lloyd's Beacon.  Wearing it teleports you to its last anchor; taking it off re-anchors it to where you are. (5 independent slots.  Cost: 30 mana dust plus 1 diamond.  Requires Bind Essence 12.)"
+        ]
+      }
+    ],
+    "condition": {
+      "u_has_trait": "MIE_SOUL_BRANDED"
+    },
+    "false_effect": [
+      {
+        "u_message": "The mana gathers and stirs, but refuses to answer.  You have not paid the Soul Toll (read The Tattooed Soul first).",
+        "type": "bad"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CAST_PREFIX",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "run_eoc_selector": [
+          "EOC_MIE_PICK_VIGOR",
+          "EOC_MIE_PICK_VITALITY",
+          "EOC_MIE_PICK_MENDING",
+          "EOC_MIE_PICK_FEATHERWEIGHT",
+          "EOC_MIE_PICK_MANAWEAVE",
+          "EOC_MIE_PICK_RADIANCE",
+          "EOC_MIE_PICK_SHADOW",
+          "EOC_MIE_PICK_STABILITY",
+          "EOC_MIE_PICK_FEATHERFALL",
+          "EOC_MIE_PICK_BALANCED",
+          "EOC_MIE_PICK_PAINRESIST",
+          "EOC_MIE_PICK_HUSHED",
+          "EOC_MIE_PICK_AURA"
+        ],
+        "names": [
+          "Vigor",
+          "Vitality",
+          "Mending",
+          "Featherweight",
+          "Manaweave",
+          "Radiance",
+          "Shadowed",
+          "Rooted",
+          "Feathered Fall",
+          "Attuned (all four stats)",
+          "Painbound",
+          "Hushed",
+          "Warm Hearth"
+        ],
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m"
+        ],
+        "title": "Bind a peice of your soul into your attire.(Prefix)",
+        "allow_cancel": true,
+        "descriptions": [
+          "Vigor.  +Max stamina and faster stamina regen.  Cost: 10 mana dust.",
+          "Vitality.  +Max HP.  Cost: 10 mana dust.",
+          "Mending.  +HP regeneration.  Cost: 10 mana dust.",
+          "Featherweight.  +Carry weight.  Cost: 10 mana dust.",
+          "Manaweave.  +Mana regeneration.  Cost: 10 mana dust.",
+          "Radiance.  Sheds light.  Cost: 10 mana dust.",
+          "Shadowed.  +Stealth.  Cost: 10 mana dust.",
+          "Rooted.  +Knockback resistance.  Cost: 10 mana dust.",
+          "Feathered Fall.  Full immunity to fall damage while worn.  Requires Bind Essence 8.  Cost: 10 mana dust.",
+          "Attuned.  +2 to Strength, Dexterity, Intelligence, and Perception (+3 at Bind Essence 12).  Cost: 40 mana dust.",
+          "Painbound.  Pain hurts your stats less.  30% at Bind Essence 8, 50% at 12, 70% at 20.  Cost: 10 mana dust.",
+          "Hushed.  Quieter footsteps.  Cost: 10 mana dust.",
+          "Warm Hearth.  Climate control against heat and chill.  Does not protect from lava, fire, or radiation.  Cost: 10 mana dust."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_VIGOR",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_VIGOR",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Vigor",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel a well of stamina open within you.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(4000, 800 + u_spell_level('mie_bind_essence') * 160)"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_roll2 = min(3.0, 0.5 + u_spell_level('mie_bind_essence') * 0.125)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_VITALITY",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_VITALITY",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Vitality",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel hardier.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(70, 10 + u_spell_level('mie_bind_essence') * 3)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MENDING",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_MENDING",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mending",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your wounds seem to close a little faster than they should.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(20, 4 + floor(u_spell_level('mie_bind_essence') * 0.8))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_FEATHERWEIGHT",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_FEATHERWEIGHT",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Featherweight",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your burdens feel lighter.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = u_spell_level('mie_bind_essence') <= 12 ? (9080 + (u_spell_level('mie_bind_essence') - 1) * 3302) : (45400 + min(8, u_spell_level('mie_bind_essence') - 12) * 5675)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MANAWEAVE",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_MANAWEAVE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Manaweave",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel the flow of mana accelerate.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(25, 4 + u_spell_level('mie_bind_essence') * 1.05)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_RADIANCE",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_RADIANCE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Radiance",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "A beckoning light to show the way.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(150, 30 + u_spell_level('mie_bind_essence') * 6)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_SHADOW",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_SHADOW",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Shadowed",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The world seems to notice you a little less.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(60, 10 + u_spell_level('mie_bind_essence') * 2.5)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_STABILITY",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_STABILITY",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Rooted",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel harder to move than you should be.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(1.0, 0.3 + u_spell_level('mie_bind_essence') * 0.035)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_FEATHERFALL",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_FEATHERFALL",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Feathered Fall",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel weightless, as though the ground might catch you gently.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 1"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ],
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 8"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 8.",
+        "type": "bad"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_BALANCED",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_BALANCED",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Attuned",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Every part of you feels sharpened at once.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = u_spell_level('mie_bind_essence') >= 12 ? 3 : (u_spell_level('mie_bind_essence') >= 6 ? 2 : 1)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CAST_SUFFIX",
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "run_eoc_selector": [
+          "EOC_MIE_PICK_FOCUS_STR",
+          "EOC_MIE_PICK_FOCUS_DEX",
+          "EOC_MIE_PICK_FOCUS_INT",
+          "EOC_MIE_PICK_FOCUS_PER",
+          "EOC_MIE_PICK_HASTE",
+          "EOC_MIE_PICK_SKILL_MELEE",
+          "EOC_MIE_PICK_SKILL_DODGE",
+          "EOC_MIE_PICK_SKILL_GUN",
+          "EOC_MIE_PICK_SKILL_FIRSTAID",
+          "EOC_MIE_PICK_SKILL_SURVIVAL",
+          "EOC_MIE_PICK_UNBURDEN",
+          "EOC_MIE_PICK_WARDING",
+          "EOC_MIE_PICK_RESILIENCE",
+          "EOC_MIE_PICK_ARCANA"
+        ],
+        "names": [
+          "Ogre's Might",
+          "Cat's Grace",
+          "Owl's Wisdom",
+          "Eagle's Eye",
+          "Windstride",
+          "Martial",
+          "Elusive",
+          "Marksman",
+          "Healer",
+          "Survivalist",
+          "Unburdened",
+          "Bulwark",
+          "Steadfast",
+          "Arcana"
+        ],
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n"
+        ],
+        "title": "focus a peice of your soul onto a gem and afix it to your attire",
+        "allow_cancel": true,
+        "descriptions": [
+          "Ogre's Might.  +Strength, stacks with Attuned.  Requires Bind Essence 6.  Cost: 20 mana dust + 1 sapphire.",
+          "Cat's Grace.  +Dexterity, stacks with Attuned.  Requires Bind Essence 6.  Cost: 20 mana dust + 1 sapphire.",
+          "Owl's Wisdom.  +Intelligence, stacks with Attuned.  Requires Bind Essence 6.  Cost: 20 mana dust + 1 sapphire.",
+          "Eagle's Eye.  +Perception, stacks with Attuned.  Requires Bind Essence 6.  Cost: 20 mana dust + 1 sapphire.",
+          "Windstride.  +Speed.  Cost: 20 mana dust + 1 ruby.",
+          "Martial.  +Melee skill.  Requires Bind Essence 9.  Cost: 20 mana dust + 1 garnet.",
+          "Elusive.  +Dodge skill.  Requires Bind Essence 9.  Cost: 20 mana dust + 1 garnet.",
+          "Marksman.  +Guns skill.  Requires Bind Essence 9.  Cost: 20 mana dust + 1 garnet.",
+          "Healer.  +First aid skill.  Requires Bind Essence 9.  Cost: 20 mana dust + 1 garnet.",
+          "Survivalist.  +Survival skill.  Requires Bind Essence 9.  Cost: 20 mana dust + 1 garnet.",
+          "Unburdened.  -Encumbrance.  Cost: 20 mana dust + 1 diamond.",
+          "Bulwark.  +Armor (all).  Cost: 20 mana dust + 1 amethyst.",
+          "Steadfast.  +Knockdown resistance.  Cost: 20 mana dust + 1 amethyst.",
+          "Arcana.  +Max mana.  Cost: 20 mana dust + 1 sapphire."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_FOCUS_STR",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 6"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 6.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_FOCUS_STR",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Ogre's Might",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your strength surges.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "sapphire",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(5, 2 + floor((u_spell_level('mie_bind_essence') - 6) / 2)) + (u_spell_level('mie_bind_essence') >= 20 ? 1 : 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_FOCUS_DEX",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 6"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 6.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_FOCUS_DEX",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Cat's Grace",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your movements sharpen.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "sapphire",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(5, 2 + floor((u_spell_level('mie_bind_essence') - 6) / 2)) + (u_spell_level('mie_bind_essence') >= 20 ? 1 : 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_FOCUS_INT",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 6"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 6.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_FOCUS_INT",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Owl's Wisdom",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your mind opens wider.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "sapphire",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(5, 2 + floor((u_spell_level('mie_bind_essence') - 6) / 2)) + (u_spell_level('mie_bind_essence') >= 20 ? 1 : 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_FOCUS_PER",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 6"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 6.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_FOCUS_PER",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Eagle's Eye",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your senses sharpen to a fine point.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "sapphire",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(5, 2 + floor((u_spell_level('mie_bind_essence') - 6) / 2)) + (u_spell_level('mie_bind_essence') >= 20 ? 1 : 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_HASTE",
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_HASTE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Windstride",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The world seems to slow down around you.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "ruby",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(35, 8 + u_spell_level('mie_bind_essence') * 1.35)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_SKILL_MELEE",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 9"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 9.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_SKILL_MELEE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Martial",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your body remembers a thousand battles it never fought.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "garnet",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(10, 1 + floor(u_spell_level('mie_bind_essence') * 7 / 12))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_SKILL_DODGE",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 9"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 9.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_SKILL_DODGE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Elusive",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel harder to pin down.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "garnet",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(10, 1 + floor(u_spell_level('mie_bind_essence') * 7 / 12))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_SKILL_GUN",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 9"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 9.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_SKILL_GUN",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Marksman",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your aim steadies of its own accord.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "garnet",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(10, 1 + floor(u_spell_level('mie_bind_essence') * 7 / 12))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_SKILL_FIRSTAID",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 9"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 9.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_SKILL_FIRSTAID",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Healer",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your hands know exactly where to press.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "garnet",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(10, 1 + floor(u_spell_level('mie_bind_essence') * 7 / 12))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_SKILL_SURVIVAL",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 9"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 9.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_SKILL_SURVIVAL",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Survivalist",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The wild feels a little less hostile.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "garnet",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(10, 1 + floor(u_spell_level('mie_bind_essence') * 7 / 12))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_UNBURDEN",
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_UNBURDEN",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Unburdened",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your gear seems to weigh on you less.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(55, 15 + u_spell_level('mie_bind_essence') * 3.3) + (u_spell_level('mie_bind_essence') >= 12 ? (floor(u_val('intelligence') * 0.3) + floor(u_skill('spellcraft') / 3)) : 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_WARDING",
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_WARDING",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Bulwark",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "You feel a subtle wall settle between you and harm.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "amethyst",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(40, 3 + u_spell_level('mie_bind_essence') * 1.85)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_RESILIENCE",
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_RESILIENCE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Steadfast",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your footing feels unshakeable.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "amethyst",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(40, 5 + u_spell_level('mie_bind_essence') * 2)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_ARCANA",
+    "effect": [
+      {
+        "set_string_var": "suffix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_SFX_ARCANA",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Arcana",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your well of mana deepens.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "sapphire",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(2000, u_spell_level('mie_bind_essence') * 100)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_AURA",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_AURA",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Warm Hearth",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "A quiet warmth settles over you, keeping the worst of the weather at bay.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(20, 4 + u_spell_level('mie_bind_essence'))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CAST_CAPSTONE",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 15"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this working.  Requires level 15.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "capstone",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "run_eoc_selector": [
+          "EOC_MIE_PICK_WARRIOR",
+          "EOC_MIE_PICK_MAGE",
+          "EOC_MIE_PICK_RANGER"
+        ],
+        "names": [
+          "Warrior's Oath",
+          "Mage's Communion",
+          "Ranger's Vow"
+        ],
+        "keys": [
+          "a",
+          "b",
+          "c"
+        ],
+        "title": "Which path will you swear to?",
+        "allow_cancel": true,
+        "descriptions": [
+          "Warrior's Oath.  +6 STR, +6 DEX, +40 HP, +7 melee, +7 dodge.  -3 INT, -3 PER, -3 mana regen, -7 guns, -7 archery.  Cost: 60 mana dust + 2 diamonds.",
+          "Mage's Communion.  +7 INT, +7 PER, +15 mana regen, +3000 max mana.  -3 STR, -7 melee, -7 dodge.  Cost: 60 mana dust + 2 diamonds.",
+          "Ranger's Vow.  +6 DEX, +7 PER, +22 speed, +6 ranged damage, -30 dispersion.  -3 mana regen, -7 spellcraft.  Cost: 60 mana dust + 2 diamonds."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_WARRIOR",
+    "effect": [
+      {
+        "set_string_var": "capstone",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_CAP_WARRIOR",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Warrior's Oath",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The Power washes over you but you feel like a peice of you has been left behind.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 1"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MAGE",
+    "effect": [
+      {
+        "set_string_var": "capstone",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_CAP_MAGE",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mage's Communion",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The Weave opens to you fully but you feel slightly lethargic.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 1"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_RANGER",
+    "effect": [
+      {
+        "set_string_var": "capstone",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_CAP_RANGER",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Ranger's Vow",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The world sharpens and you feel like the wind but you feel you left something behind.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 1"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_PAINRESIST",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 8"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 8.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_PAINRESIST",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Painbound",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Old aches seem to diminish.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = u_spell_level('mie_bind_essence') < 8 ? 0 : (u_spell_level('mie_bind_essence') < 12 ? (0.3 + (u_spell_level('mie_bind_essence') - 8) * 0.05) : (0.5 + min(8, u_spell_level('mie_bind_essence') - 12) * 0.025))"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_HUSHED",
+    "effect": [
+      {
+        "set_string_var": "prefix",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "set_string_var": "MIE_PFX_HUSHED",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Hushed",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "Your footsteps seem to fall silent.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = min(0.85, 0.2 + u_spell_level('mie_bind_essence') * 0.033)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CAST_MARK",
+    "condition": {
+      "math": [
+        "u_spell_level('mie_bind_essence') >= 12"
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "You have not yet mastered Bind Essence deeply enough for this.  Requires level 12.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "set_string_var": "mark",
+        "target_var": {
+          "u_val": "mie_pending_kind"
+        }
+      },
+      {
+        "run_eoc_selector": [
+          "EOC_MIE_PICK_MARK_1",
+          "EOC_MIE_PICK_MARK_2",
+          "EOC_MIE_PICK_MARK_3",
+          "EOC_MIE_PICK_MARK_4",
+          "EOC_MIE_PICK_MARK_5"
+        ],
+        "names": [
+          "Slot 1",
+          "Slot 2",
+          "Slot 3",
+          "Slot 4",
+          "Slot 5"
+        ],
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "title": "Which mark slot?  (Binding a new item to a slot already in use replaces the old binding, but the anchor point itself is kept.)",
+        "allow_cancel": true
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MARK_1",
+    "effect": [
+      {
+        "set_string_var": "MIE_BEACON",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mark 1",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The binding takes hold; the item will remember this place.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 1"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MARK_2",
+    "effect": [
+      {
+        "set_string_var": "MIE_BEACON",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mark 2",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The binding takes hold; the item will remember this place.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 2"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MARK_3",
+    "effect": [
+      {
+        "set_string_var": "MIE_BEACON",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mark 3",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The binding takes hold; the item will remember this place.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 3"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MARK_4",
+    "effect": [
+      {
+        "set_string_var": "MIE_BEACON",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mark 4",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The binding takes hold; the item will remember this place.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 4"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_MARK_5",
+    "effect": [
+      {
+        "set_string_var": "MIE_BEACON",
+        "target_var": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "set_string_var": "Mark 5",
+        "target_var": {
+          "u_val": "mie_pending_name"
+        }
+      },
+      {
+        "set_string_var": "The binding takes hold; the item will remember this place.",
+        "target_var": {
+          "u_val": "mie_pending_flavor"
+        }
+      },
+      {
+        "set_string_var": "diamond",
+        "target_var": {
+          "u_val": "mie_pending_gem"
+        }
+      },
+      {
+        "math": [
+          "u_mie_roll = 5"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_PICK_ITEM"
+      }
+    ]
+  }
+]

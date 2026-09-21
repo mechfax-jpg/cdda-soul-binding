@@ -1,0 +1,193 @@
+[
+  {
+    "id": "MIE_PFX_VIGOR",
+    "type": "json_flag",
+    "info": "The essence of Vigor is bound into this item. (<good>+Max stamina</good>.)",
+    "item_prefix": "(Vigor) "
+  },
+  {
+    "id": "MIE_PFX_VITALITY",
+    "type": "json_flag",
+    "info": "The essence of Vitality is bound into this item. (<good>+Max HP</good>.)",
+    "item_prefix": "(Vitality) "
+  },
+  {
+    "id": "MIE_PFX_MENDING",
+    "type": "json_flag",
+    "info": "The of Mending is bound into this item.  (<good>+HP regeneration</good>.)",
+    "item_prefix": "(Mending) "
+  },
+  {
+    "id": "MIE_PFX_FEATHERWEIGHT",
+    "type": "json_flag",
+    "info": "The essence of Featherweight is bound into this item.  (<good>+Carry weight</good>.)",
+    "item_prefix": "(Featherweight) "
+  },
+  {
+    "id": "MIE_PFX_MANAWEAVE",
+    "type": "json_flag",
+    "info": "The essence of Manaweave is bound into this item.  <good>+Mana regeneration</good>.",
+    "item_prefix": "(Manaweave) "
+  },
+  {
+    "id": "MIE_PFX_RADIANCE",
+    "type": "json_flag",
+    "info": "The essence of Radiance is bound into this item.  It sheds a faint light.",
+    "item_prefix": "(Radiance) "
+  },
+  {
+    "id": "MIE_PFX_SHADOW",
+    "type": "json_flag",
+    "info": "The essence of Shadowed is bound into this item.  <good>+Stealth</good>.",
+    "item_prefix": "(Shadowed) "
+  },
+  {
+    "id": "MIE_PFX_STABILITY",
+    "type": "json_flag",
+    "info": "The essence of the Rooted is bound into this item.  <good>+Knockback resistance</good>.",
+    "item_prefix": "(Rooted) "
+  },
+  {
+    "id": "MIE_PFX_FEATHERFALL",
+    "type": "json_flag",
+    "info": "The essence of Feathered Fall is bound into this item.  You take <good>no fall damage</good> while this is worn.",
+    "item_prefix": "(Feathered Fall) "
+  },
+  {
+    "id": "MIE_PFX_BALANCED",
+    "type": "json_flag",
+    "info": "The essence of Attunement is bound into this item, spreading its benefit across every attribute.",
+    "item_prefix": "(Attuned) "
+  },
+  {
+    "id": "MIE_SFX_FOCUS_STR",
+    "type": "json_flag",
+    "info": "The essence of Ogre's Might is bound into this item.  <good>+Strength</good> (stacks with an Attuned prefix).",
+    "item_suffix": " [of Ogre's Might]"
+  },
+  {
+    "id": "MIE_SFX_FOCUS_DEX",
+    "type": "json_flag",
+    "info": "The essence of Cat's Grace is bound into this item.  <good>+Dexterity</good> (stacks with an Attuned prefix).",
+    "item_suffix": " [of Cat's Grace]"
+  },
+  {
+    "id": "MIE_SFX_FOCUS_INT",
+    "type": "json_flag",
+    "info": "The essence of Owl's Wisdom is bound into this item.  <good>+Intelligence</good> (stacks with an Attuned prefix).",
+    "item_suffix": " [of Owl's Wisdom]"
+  },
+  {
+    "id": "MIE_SFX_FOCUS_PER",
+    "type": "json_flag",
+    "info": "The essence of Eagle's Eye is bound into this item.  <good>+Perception</good> (stacks with an Attuned prefix).",
+    "item_suffix": " [of Eagle's Eye]"
+  },
+  {
+    "id": "MIE_SFX_HASTE",
+    "type": "json_flag",
+    "info": "The essence of Windstride is bound into this item.  <good>+Speed</good>.",
+    "item_suffix": " [of Windstride]"
+  },
+  {
+    "id": "MIE_SFX_SKILL_MELEE",
+    "type": "json_flag",
+    "info": "A working of the Martial is bound into this item.  <good>+Melee skill</good>.",
+    "item_suffix": " {of the Martial}"
+  },
+  {
+    "id": "MIE_SFX_SKILL_DODGE",
+    "type": "json_flag",
+    "info": "A working of the Elusive is bound into this item.  <good>+Dodge skill</good>.",
+    "item_suffix": " {of the Elusive}"
+  },
+  {
+    "id": "MIE_SFX_SKILL_GUN",
+    "type": "json_flag",
+    "info": "A working of the Marksman is bound into this item.  <good>+Guns skill</good>.",
+    "item_suffix": " {of the Marksman}"
+  },
+  {
+    "id": "MIE_SFX_SKILL_FIRSTAID",
+    "type": "json_flag",
+    "info": "A working of the Healer is bound into this item.  <good>+First aid skill</good>.",
+    "item_suffix": " {of the Healer}"
+  },
+  {
+    "id": "MIE_SFX_SKILL_SURVIVAL",
+    "type": "json_flag",
+    "info": "A working of the Survivalist is bound into this item.  <good>+Survival skill</good>.",
+    "item_suffix": " {of the Survivalist}"
+  },
+  {
+    "id": "MIE_SFX_UNBURDEN",
+    "type": "json_flag",
+    "info": "The essence of the Unburdened is bound into this item.  <good>-Encumbrance</good>.",
+    "item_suffix": " [of the Unburdened]"
+  },
+  {
+    "id": "MIE_SFX_WARDING",
+    "type": "json_flag",
+    "info": "The essence of the Bulwark is bound into this item.  <good>+Armor (all)</good>.",
+    "item_suffix": " [of the Bulwark]"
+  },
+  {
+    "id": "MIE_SFX_RESILIENCE",
+    "type": "json_flag",
+    "info": "The essence of the Steadfast is bound into this item.  <good>+Knockdown resistance</good>.",
+    "item_suffix": " [of the Steadfast]"
+  },
+  {
+    "id": "MIE_SFX_ARCANA",
+    "type": "json_flag",
+    "info": "The essence of Arcana is bound into this item.  <good>+Max mana</good>.",
+    "item_suffix": " [of Arcana]"
+  },
+  {
+    "id": "MIE_PFX_AURA",
+    "type": "json_flag",
+    "info": "A minor ward of the Warm Hearth is bound into this item.  Climate control against heat and chill.",
+    "item_prefix": "(Warm Hearth) "
+  },
+  {
+    "id": "MIE_CAP_WARRIOR",
+    "type": "json_flag",
+    "info": "This item is bound to the path of the Warrior.  <good>+STR, +DEX, +HP, +melee, +dodge</good>.  <bad>-INT, -PER, -mana regen, -guns, -archery</bad>.",
+    "item_prefix": "<Warrior's Oath> "
+  },
+  {
+    "id": "MIE_CAP_MAGE",
+    "type": "json_flag",
+    "info": "This item is bound to the path of the Mage.  <good>+INT, +PER, +mana regen, +max mana</good>.  <bad>-STR, -melee, -dodge</bad>.",
+    "item_prefix": "<Mage's Communion> "
+  },
+  {
+    "id": "MIE_CAP_RANGER",
+    "type": "json_flag",
+    "info": "This item is bound to the path of the Ranger.  <good>+DEX, +PER, +speed, +ranged damage, -dispersion</good>.  <bad>-mana regen, -spellcraft</bad>.",
+    "item_prefix": "<Ranger's Vow> "
+  },
+  {
+    "id": "MIE_POCKET",
+    "type": "json_flag",
+    "info": "This binding also applies while carried, not just worn."
+  },
+  {
+    "id": "MIE_PFX_PAINRESIST",
+    "type": "json_flag",
+    "info": "A minor ward dulls pain's grip on your body.  Requires Bind Essence 8.",
+    "item_prefix": "(Painbound) "
+  },
+  {
+    "id": "MIE_PFX_HUSHED",
+    "type": "json_flag",
+    "info": "A minor ward quiets your footsteps.",
+    "item_prefix": "(Hushed) "
+  },
+  {
+    "id": "MIE_BEACON",
+    "type": "json_flag",
+    "info": "This item is bound to a Lloyd's Mark slot.  Wearing it teleports you to the slot's anchor; taking it off re-anchors the slot to your current spot.",
+    "item_prefix": "[Lloyd's] "
+  }
+]

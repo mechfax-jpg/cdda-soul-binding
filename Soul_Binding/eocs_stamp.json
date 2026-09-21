@@ -1,0 +1,691 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_PICK_ITEM",
+    "effect": [
+      {
+        "u_run_inv_eocs": "manual",
+        "title": "Bind into which worn item?  (You must be wearing it.)",
+        "search_data": [
+          {
+            "worn_only": true
+          }
+        ],
+        "true_eocs": [
+          "EOC_MIE_STAMP_DISPATCH"
+        ],
+        "false_eocs": [
+          "EOC_MIE_NO_ITEM"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_NO_ITEM",
+    "effect": [
+      {
+        "u_message": "The ritual needs a garment on your body.  (Wear the item, then cast again.)",
+        "type": "bad"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_STAMP_DISPATCH",
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_DISPATCH_TO_PREFIX",
+          "condition": {
+            "compare_string": [
+              "prefix",
+              {
+                "u_val": "mie_pending_kind"
+              }
+            ]
+          },
+          "effect": [
+            {
+              "run_eocs": "EOC_MIE_STAMP_PREFIX"
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_DISPATCH_TO_SUFFIX",
+          "condition": {
+            "compare_string": [
+              "suffix",
+              {
+                "u_val": "mie_pending_kind"
+              }
+            ]
+          },
+          "effect": [
+            {
+              "run_eocs": "EOC_MIE_STAMP_SUFFIX"
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_DISPATCH_TO_CAPSTONE",
+          "condition": {
+            "compare_string": [
+              "capstone",
+              {
+                "u_val": "mie_pending_kind"
+              }
+            ]
+          },
+          "effect": [
+            {
+              "run_eocs": "EOC_MIE_STAMP_CAPSTONE"
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_DISPATCH_TO_MARK",
+          "condition": {
+            "compare_string": [
+              "mark",
+              {
+                "u_val": "mie_pending_kind"
+              }
+            ]
+          },
+          "effect": [
+            {
+              "run_eocs": "EOC_MIE_STAMP_MARK"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_STAMP_PREFIX",
+    "condition": {
+      "or": [
+        {
+          "and": [
+            {
+              "compare_string": [
+                "MIE_PFX_BALANCED",
+                {
+                  "u_val": "mie_pending_flag"
+                }
+              ]
+            },
+            {
+              "u_has_items": {
+                "item": "mana_dust",
+                "count": 40
+              }
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "not": {
+                "compare_string": [
+                  "MIE_PFX_BALANCED",
+                  {
+                    "u_val": "mie_pending_flag"
+                  }
+                ]
+              }
+            },
+            {
+              "u_has_items": {
+                "item": "mana_dust",
+                "count": 10
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "The warding fails: you need 10 mana dust (40 for Attuned).  The mana is already spent.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSUME_PREFIX_DUST",
+          "condition": {
+            "compare_string": [
+              "MIE_PFX_BALANCED",
+              {
+                "u_val": "mie_pending_flag"
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_consume_item": "mana_dust",
+              "count": 40
+            }
+          ],
+          "false_effect": [
+            {
+              "u_consume_item": "mana_dust",
+              "count": 10
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": "EOC_MIE_APPLY_SOUL_TOLL"
+      },
+      {
+        "run_eocs": "EOC_MIE_CLEAR_PREFIX_FLAGS"
+      },
+      {
+        "npc_set_flag": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "math": [
+          "n_mie_pfx_power = u_mie_roll"
+        ]
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_STAMP_VIGOR_REGEN",
+          "condition": {
+            "compare_string": [
+              "MIE_PFX_VIGOR",
+              {
+                "u_val": "mie_pending_flag"
+              }
+            ]
+          },
+          "effect": [
+            {
+              "math": [
+                "n_mie_pfx_power2 = u_mie_roll2"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "u_message": "<u_val:mie_pending_flavor>  (<u_val:mie_pending_name>, power <u_val:mie_roll>)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECALC"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECURRING_RECALC"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_STAMP_SUFFIX",
+    "condition": {
+      "and": [
+        {
+          "u_has_items": {
+            "item": "mana_dust",
+            "count": 20
+          }
+        },
+        {
+          "u_has_items": {
+            "item": {
+              "u_val": "mie_pending_gem"
+            },
+            "count": 1
+          }
+        }
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "The binding fails: (you need 20 mana dust and a <u_val:mie_pending_gem>.)  The mana is already spent.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "u_consume_item": "mana_dust",
+        "count": 20
+      },
+      {
+        "u_consume_item": {
+          "u_val": "mie_pending_gem"
+        },
+        "count": 1
+      },
+      {
+        "run_eocs": "EOC_MIE_APPLY_SOUL_TOLL"
+      },
+      {
+        "run_eocs": "EOC_MIE_CLEAR_SUFFIX_FLAGS"
+      },
+      {
+        "npc_set_flag": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "math": [
+          "n_mie_sfx_power = u_mie_roll"
+        ]
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_DISPATCH_TO_POCKET",
+          "condition": {
+            "math": [
+              "u_spell_level('mie_bind_essence') >= 12"
+            ]
+          },
+          "effect": [
+            {
+              "run_eocs": "EOC_MIE_MAYBE_POCKET"
+            }
+          ]
+        }
+      },
+      {
+        "u_message": "<u_val:mie_pending_flavor>  (<u_val:mie_pending_name>, power <u_val:mie_roll>)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECALC"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECURRING_RECALC"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_MAYBE_POCKET",
+    "effect": [
+      {
+        "npc_set_flag": "MIE_POCKET"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_STAMP_CAPSTONE",
+    "condition": {
+      "and": [
+        {
+          "math": [
+            "u_spell_level('mie_bind_essence') >= 15"
+          ]
+        },
+        {
+          "u_has_items": {
+            "item": "mana_dust",
+            "count": 60
+          }
+        },
+        {
+          "u_has_items": {
+            "item": {
+              "u_val": "mie_pending_gem"
+            },
+            "count": 2
+          }
+        }
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "The binding fails (level 15 mastery, 60 mana dust, and 2 <u_val:mie_pending_gem>s.)  The mana is already spent.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "u_consume_item": "mana_dust",
+        "count": 60
+      },
+      {
+        "u_consume_item": {
+          "u_val": "mie_pending_gem"
+        },
+        "count": 2
+      },
+      {
+        "run_eocs": "EOC_MIE_APPLY_SOUL_TOLL"
+      },
+      {
+        "run_eocs": "EOC_MIE_CLEAR_CAPSTONE_FLAGS"
+      },
+      {
+        "npc_set_flag": {
+          "u_val": "mie_pending_flag"
+        }
+      },
+      {
+        "u_message": "<u_val:mie_pending_flavor>  You have sworn yourself to the path of the <u_val:mie_pending_name>.",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECALC"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECURRING_RECALC"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_APPLY_SOUL_TOLL",
+    "effect": [
+      {
+        "math": [
+          "u_mie_soul_debt = u_mie_soul_debt + 1"
+        ]
+      },
+      {
+        "u_message": "You feel a piece of your soul tear away as the essence binds...",
+        "type": "bad"
+      },
+      {
+        "math": [
+          "u_pain() += (30 + u_mie_soul_debt * 10)"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CLEAR_PREFIX_FLAGS",
+    "effect": [
+      {
+        "npc_unset_flag": "MIE_PFX_VIGOR"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_VITALITY"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_MENDING"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_FEATHERWEIGHT"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_MANAWEAVE"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_RADIANCE"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_SHADOW"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_STABILITY"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_FEATHERFALL"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_BALANCED"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_PAINRESIST"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_HUSHED"
+      },
+      {
+        "npc_unset_flag": "MIE_PFX_AURA"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CLEAR_SUFFIX_FLAGS",
+    "effect": [
+      {
+        "npc_unset_flag": "MIE_SFX_FOCUS_STR"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_FOCUS_DEX"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_FOCUS_INT"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_FOCUS_PER"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_HASTE"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_SKILL_MELEE"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_SKILL_DODGE"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_SKILL_GUN"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_SKILL_FIRSTAID"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_SKILL_SURVIVAL"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_UNBURDEN"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_WARDING"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_RESILIENCE"
+      },
+      {
+        "npc_unset_flag": "MIE_SFX_ARCANA"
+      },
+      {
+        "npc_unset_flag": "MIE_POCKET"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CLEAR_CAPSTONE_FLAGS",
+    "effect": [
+      {
+        "npc_unset_flag": "MIE_CAP_WARRIOR"
+      },
+      {
+        "npc_unset_flag": "MIE_CAP_MAGE"
+      },
+      {
+        "npc_unset_flag": "MIE_CAP_RANGER"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_SOUL_RECOVERY",
+    "recurrence": [
+      "2 hours",
+      "2 hours"
+    ],
+    "condition": {
+      "math": [
+        "u_mie_soul_debt > 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "u_mie_soul_debt = u_mie_soul_debt - 1"
+        ]
+      },
+      {
+        "u_message": "Your soul begins to mend from the essence binding.  You feel slightly better.",
+        "type": "good"
+      }
+    ],
+    "deactivate_condition": {
+      "math": [
+        "u_mie_soul_debt <= 0"
+      ]
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_STAMP_MARK",
+    "condition": {
+      "and": [
+        {
+          "u_has_items": {
+            "item": "mana_dust",
+            "count": 30
+          }
+        },
+        {
+          "u_has_items": {
+            "item": "diamond",
+            "count": 1
+          }
+        }
+      ]
+    },
+    "false_effect": [
+      {
+        "u_message": "The binding fails: you need 30 mana dust and a diamond.  The mana is already spent.",
+        "type": "bad"
+      }
+    ],
+    "effect": [
+      {
+        "u_consume_item": "mana_dust",
+        "count": 30
+      },
+      {
+        "u_consume_item": "diamond",
+        "count": 1
+      },
+      {
+        "npc_unset_flag": "MIE_BEACON"
+      },
+      {
+        "npc_set_flag": "MIE_BEACON"
+      },
+      {
+        "math": [
+          "n_mie_beacon_slot = u_mie_roll"
+        ]
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_MARK_INIT_1",
+          "condition": {
+            "math": [
+              "u_mie_roll == 1"
+            ]
+          },
+          "effect": [
+            {
+              "npc_location_variable": {
+                "u_val": "mie_beacon_loc_1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_MARK_INIT_2",
+          "condition": {
+            "math": [
+              "u_mie_roll == 2"
+            ]
+          },
+          "effect": [
+            {
+              "npc_location_variable": {
+                "u_val": "mie_beacon_loc_2"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_MARK_INIT_3",
+          "condition": {
+            "math": [
+              "u_mie_roll == 3"
+            ]
+          },
+          "effect": [
+            {
+              "npc_location_variable": {
+                "u_val": "mie_beacon_loc_3"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_MARK_INIT_4",
+          "condition": {
+            "math": [
+              "u_mie_roll == 4"
+            ]
+          },
+          "effect": [
+            {
+              "npc_location_variable": {
+                "u_val": "mie_beacon_loc_4"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_MARK_INIT_5",
+          "condition": {
+            "math": [
+              "u_mie_roll == 5"
+            ]
+          },
+          "effect": [
+            {
+              "npc_location_variable": {
+                "u_val": "mie_beacon_loc_5"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "u_message": "<u_val:mie_pending_flavor>  (<u_val:mie_pending_name>)  It will remember this spot until worn and taken off elsewhere.",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_MIE_BEACON_CHECK"
+      }
+    ]
+  }
+]

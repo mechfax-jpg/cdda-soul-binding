@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "soul_binding",
+    "name": "Soul Binding",
+    "authors": [ "Fox" ],
+    "description": "Adds Bind Essence, a classless ritual that permanently binds enchantments into worn items at the cost of a soul brand paid in pain, weakness, and a piece of yourself you don't get back. Requires Magiclysm.",
+    "category": "magical",
+    "dependencies": [ "magiclysm" ]
+  }
+]

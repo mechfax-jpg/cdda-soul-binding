@@ -1,0 +1,61 @@
+[
+  {
+    "id": "mie_bind_essence",
+    "type": "SPELL",
+    "name": {
+      "str": "Bind Essence"
+    },
+    "description": "A classless ritual that seats lasting enchantments in a garment you are wearing.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_MIE_CAST",
+    "shape": "blast",
+    "spell_class": "NONE",
+    "magic_type": "mie_soul_magic",
+    "flags": [
+      "ENHANCEMENT_SPELL",
+      "CONCENTRATE",
+      "VERBAL",
+      "SOMATIC",
+      "NO_LEGS"
+    ],
+    "difficulty": 2,
+    "max_level": 20,
+    "base_energy_cost": 400,
+    "final_energy_cost": 200,
+    "energy_increment": -10,
+    "base_casting_time": 30000,
+    "final_casting_time": 8000,
+    "casting_time_increment": -1100,
+    "message": "You grind mana dust between your fingers and look over the garments you are wearing."
+  },
+  {
+    "id": "mie_soul_brand",
+    "type": "SPELL",
+    "name": {
+      "str": "Soul Branding"
+    },
+    "description": "A forbidden ritual that permanently brands your soul.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_MIE_PERFORM_BRANDING",
+    "shape": "blast",
+    "spell_class": "NONE",
+    "magic_type": "mie_soul_magic",
+    "flags": [
+      "CONCENTRATE",
+      "SOMATIC",
+      "NO_LEGS",
+      "NO_EXPLAIN"
+    ],
+    "difficulty": 0,
+    "max_level": 1,
+    "base_energy_cost": 0,
+    "base_casting_time": 7200000,
+    "message": "You trace the ritual circle in mana dust and place your palm in the center.  You must hold perfectly still..."
+  }
+]

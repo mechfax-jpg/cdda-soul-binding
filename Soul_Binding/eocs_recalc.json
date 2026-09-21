@@ -1,0 +1,1417 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_RECALC",
+    "effect": [
+      {
+        "math": [
+          "u_mie_temp_stamina = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_painresist = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_hush = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_temp_stamina_regen = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_soul_debt = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_dex = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_fall = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_gravity = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_int = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_knockback = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_manaregen = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_mending = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_per = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_radiance = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_shadow = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_str = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_vitality = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_armor = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_aura = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_dex = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_int = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_knockdown = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_mana = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_per = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_skill_dodge = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_skill_firstaid = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_skill_gun = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_skill_melee = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_skill_survival = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_speed = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_str = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_sfx_unburden = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_has_warrior = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_has_mage = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_has_ranger = 0"
+        ]
+      },
+      {
+        "u_run_inv_eocs": "all",
+        "search_data": [
+          {
+            "worn_only": true
+          }
+        ],
+        "true_eocs": [
+          "EOC_MIE_CONSIDER_PREFIX",
+          "EOC_MIE_CONSIDER_SUFFIX",
+          "EOC_MIE_CONSIDER_CAPSTONE"
+        ]
+      },
+      {
+        "u_run_inv_eocs": "all",
+        "search_data": [
+          {
+            "flags": [
+              "MIE_POCKET"
+            ]
+          }
+        ],
+        "true_eocs": [
+          "EOC_MIE_CONSIDER_SUFFIX"
+        ]
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_DISPATCH_TO_STURDY",
+          "condition": {
+            "math": [
+              "u_spell_level('mie_bind_essence') >= 12"
+            ]
+          },
+          "effect": [
+            {
+              "u_run_inv_eocs": "all",
+              "search_data": [
+                {
+                  "worn_only": true
+                }
+              ],
+              "true_eocs": [
+                "EOC_MIE_AUTO_STURDY"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "math": [
+          "u_mie_pfx_stamina = u_mie_temp_stamina"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_pfx_stamina_regen = u_mie_temp_stamina_regen"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_eff_warrior = u_mie_has_warrior"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_eff_mage = u_mie_has_mage * (1 - u_mie_has_warrior)"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_eff_ranger = u_mie_has_ranger * (1 - u_mie_has_warrior) * (1 - u_mie_has_mage)"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_active_total = u_mie_pfx_dex + u_mie_pfx_fall + u_mie_pfx_gravity + u_mie_pfx_int + u_mie_pfx_knockback + u_mie_pfx_manaregen + u_mie_pfx_mending + u_mie_pfx_per + u_mie_pfx_radiance + u_mie_pfx_shadow + u_mie_pfx_stamina + u_mie_pfx_str + u_mie_pfx_vitality + u_mie_sfx_armor + u_mie_pfx_aura + u_mie_sfx_dex + u_mie_sfx_int + u_mie_sfx_knockdown + u_mie_sfx_mana + u_mie_sfx_per + u_mie_sfx_skill_dodge + u_mie_sfx_skill_firstaid + u_mie_sfx_skill_gun + u_mie_sfx_skill_melee + u_mie_sfx_skill_survival + u_mie_sfx_speed + u_mie_sfx_str + u_mie_sfx_unburden + u_mie_has_warrior + u_mie_has_mage + u_mie_has_ranger + u_mie_pfx_painresist + u_mie_pfx_hush"
+        ]
+      },
+      {
+        "run_eocs": "EOC_MIE_APPLY_TRAIT"
+      },
+      {
+        "run_eocs": "EOC_MIE_APPLY_FEATHERFALL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CONSIDER_PREFIX",
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_VIGOR",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_VIGOR"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_temp_stamina = max(u_mie_temp_stamina, n_mie_pfx_power)"
+              ]
+            },
+            {
+              "math": [
+                "u_mie_temp_stamina_regen = max(u_mie_temp_stamina_regen, n_mie_pfx_power2)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_VITALITY",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_VITALITY"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_vitality = max(u_mie_pfx_vitality, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_MENDING",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_MENDING"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_mending = max(u_mie_pfx_mending, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_FEATHERWEIGHT",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_FEATHERWEIGHT"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_gravity = max(u_mie_pfx_gravity, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_MANAWEAVE",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_MANAWEAVE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_manaregen = max(u_mie_pfx_manaregen, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_RADIANCE",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_RADIANCE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_radiance = max(u_mie_pfx_radiance, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_SHADOW",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_SHADOW"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_shadow = max(u_mie_pfx_shadow, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_STABILITY",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_STABILITY"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_knockback = max(u_mie_pfx_knockback, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_FEATHERFALL",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_FEATHERFALL"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_fall = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_BALANCED",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_BALANCED"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_str = max(u_mie_pfx_str, n_mie_pfx_power)"
+              ]
+            },
+            {
+              "math": [
+                "u_mie_pfx_dex = max(u_mie_pfx_dex, n_mie_pfx_power)"
+              ]
+            },
+            {
+              "math": [
+                "u_mie_pfx_int = max(u_mie_pfx_int, n_mie_pfx_power)"
+              ]
+            },
+            {
+              "math": [
+                "u_mie_pfx_per = max(u_mie_pfx_per, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_PAINRESIST",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_PAINRESIST"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_painresist = max(u_mie_pfx_painresist, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_HUSHED",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_HUSHED"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_hush = max(u_mie_pfx_hush, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_AURA",
+          "condition": {
+            "npc_has_flag": "MIE_PFX_AURA"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_pfx_aura = max(u_mie_pfx_aura, n_mie_pfx_power)"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CONSIDER_SUFFIX",
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_FOCUS_STR",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_FOCUS_STR"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_str = max(u_mie_sfx_str, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_FOCUS_DEX",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_FOCUS_DEX"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_dex = max(u_mie_sfx_dex, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_FOCUS_INT",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_FOCUS_INT"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_int = max(u_mie_sfx_int, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_FOCUS_PER",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_FOCUS_PER"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_per = max(u_mie_sfx_per, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_HASTE",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_HASTE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_speed = max(u_mie_sfx_speed, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_SKILL_MELEE",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_SKILL_MELEE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_skill_melee = max(u_mie_sfx_skill_melee, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_SKILL_DODGE",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_SKILL_DODGE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_skill_dodge = max(u_mie_sfx_skill_dodge, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_SKILL_GUN",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_SKILL_GUN"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_skill_gun = max(u_mie_sfx_skill_gun, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_SKILL_FIRSTAID",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_SKILL_FIRSTAID"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_skill_firstaid = max(u_mie_sfx_skill_firstaid, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_SKILL_SURVIVAL",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_SKILL_SURVIVAL"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_skill_survival = max(u_mie_sfx_skill_survival, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_UNBURDEN",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_UNBURDEN"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_unburden = max(u_mie_sfx_unburden, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_WARDING",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_WARDING"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_armor = max(u_mie_sfx_armor, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_RESILIENCE",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_RESILIENCE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_knockdown = max(u_mie_sfx_knockdown, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_ARCANA",
+          "condition": {
+            "npc_has_flag": "MIE_SFX_ARCANA"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_sfx_mana = max(u_mie_sfx_mana, n_mie_sfx_power)"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_CONSIDER_CAPSTONE",
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_WARRIOR",
+          "condition": {
+            "npc_has_flag": "MIE_CAP_WARRIOR"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_has_warrior = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_MAGE",
+          "condition": {
+            "npc_has_flag": "MIE_CAP_MAGE"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_has_mage = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_CONSIDER_RANGER",
+          "condition": {
+            "npc_has_flag": "MIE_CAP_RANGER"
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_has_ranger = 1"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_AUTO_STURDY",
+    "condition": {
+      "or": [
+        {
+          "npc_has_flag": "MIE_PFX_VIGOR"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_VITALITY"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_MENDING"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_FEATHERWEIGHT"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_MANAWEAVE"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_RADIANCE"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_SHADOW"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_STABILITY"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_FEATHERFALL"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_BALANCED"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_FOCUS_STR"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_FOCUS_DEX"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_FOCUS_INT"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_FOCUS_PER"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_HASTE"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_SKILL_MELEE"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_SKILL_DODGE"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_SKILL_GUN"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_SKILL_FIRSTAID"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_SKILL_SURVIVAL"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_UNBURDEN"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_WARDING"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_RESILIENCE"
+        },
+        {
+          "npc_has_flag": "MIE_SFX_ARCANA"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_AURA"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_PAINRESIST"
+        },
+        {
+          "npc_has_flag": "MIE_PFX_HUSHED"
+        }
+      ]
+    },
+    "effect": [
+      {
+        "npc_set_flag": "STURDY"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_APPLY_TRAIT",
+    "condition": {
+      "math": [
+        "u_mie_active_total > 0"
+      ]
+    },
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BOUNCE_TRAIT_IF_CHANGED",
+          "condition": {
+            "math": [
+              "u_mie_active_total != u_mie_active_total_prev"
+            ]
+          },
+          "effect": [
+            {
+              "u_lose_trait": "MIE_BOUND"
+            },
+            {
+              "u_add_trait": "MIE_BOUND"
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_ENSURE_TRAIT_PRESENT",
+          "condition": {
+            "not": {
+              "u_has_trait": "MIE_BOUND"
+            }
+          },
+          "effect": [
+            {
+              "u_add_trait": "MIE_BOUND"
+            }
+          ]
+        }
+      },
+      {
+        "math": [
+          "u_mie_active_total_prev = u_mie_active_total"
+        ]
+      }
+    ],
+    "false_effect": [
+      {
+        "u_lose_trait": "MIE_BOUND"
+      },
+      {
+        "math": [
+          "u_mie_active_total_prev = 0"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_APPLY_FEATHERFALL",
+    "condition": {
+      "math": [
+        "u_mie_pfx_fall > 0"
+      ]
+    },
+    "effect": [
+      {
+        "u_lose_trait": "MIE_FEATHER_FALL"
+      },
+      {
+        "u_add_trait": "MIE_FEATHER_FALL"
+      }
+    ],
+    "false_effect": [
+      {
+        "u_lose_trait": "MIE_FEATHER_FALL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_RECURRING_RECALC",
+    "condition": {
+      "u_has_trait": "MIE_BOUND"
+    },
+    "effect": [
+      {
+        "run_eocs": "EOC_MIE_RECALC"
+      },
+      {
+        "run_eocs": "EOC_MIE_RECURRING_RECALC",
+        "time_in_future": "10 seconds"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_BEACON_CHECK",
+    "effect": [
+      {
+        "math": [
+          "u_mie_beacon_worn_now_1 = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_beacon_worn_now_2 = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_beacon_worn_now_3 = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_beacon_worn_now_4 = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_mie_beacon_worn_now_5 = 0"
+        ]
+      },
+      {
+        "u_run_inv_eocs": "all",
+        "search_data": [
+          {
+            "worn_only": true,
+            "flags": [
+              "MIE_BEACON"
+            ]
+          }
+        ],
+        "true_eocs": [
+          "EOC_MIE_BEACON_CONSIDER"
+        ]
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_WORN_1",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_1 == 1"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_1 == 0"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_message": "Mark 1 pulls at you.",
+              "type": "good"
+            },
+            {
+              "u_teleport": {
+                "u_val": "mie_beacon_loc_1"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_1 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_REMOVED_1",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_1 == 0"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_1 == 1"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_location_variable": {
+                "u_val": "mie_beacon_loc_1"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_1 = 0"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_WORN_2",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_2 == 1"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_2 == 0"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_message": "Mark 2 pulls at you.",
+              "type": "good"
+            },
+            {
+              "u_teleport": {
+                "u_val": "mie_beacon_loc_2"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_2 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_REMOVED_2",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_2 == 0"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_2 == 1"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_location_variable": {
+                "u_val": "mie_beacon_loc_2"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_2 = 0"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_WORN_3",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_3 == 1"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_3 == 0"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_message": "Mark 3 pulls at you.",
+              "type": "good"
+            },
+            {
+              "u_teleport": {
+                "u_val": "mie_beacon_loc_3"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_3 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_REMOVED_3",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_3 == 0"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_3 == 1"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_location_variable": {
+                "u_val": "mie_beacon_loc_3"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_3 = 0"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_WORN_4",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_4 == 1"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_4 == 0"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_message": "Mark 4 pulls at you.",
+              "type": "good"
+            },
+            {
+              "u_teleport": {
+                "u_val": "mie_beacon_loc_4"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_4 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_REMOVED_4",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_4 == 0"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_4 == 1"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_location_variable": {
+                "u_val": "mie_beacon_loc_4"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_4 = 0"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_WORN_5",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_5 == 1"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_5 == 0"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_message": "Mark 5 pulls at you.",
+              "type": "good"
+            },
+            {
+              "u_teleport": {
+                "u_val": "mie_beacon_loc_5"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_5 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_NEWLY_REMOVED_5",
+          "condition": {
+            "and": [
+              {
+                "math": [
+                  "u_mie_beacon_worn_now_5 == 0"
+                ]
+              },
+              {
+                "math": [
+                  "u_mie_beacon_worn_last_5 == 1"
+                ]
+              }
+            ]
+          },
+          "effect": [
+            {
+              "u_location_variable": {
+                "u_val": "mie_beacon_loc_5"
+              }
+            },
+            {
+              "math": [
+                "u_mie_beacon_worn_last_5 = 0"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": "EOC_MIE_BEACON_CHECK",
+        "time_in_future": "10 seconds"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_MIE_BEACON_CONSIDER",
+    "effect": [
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_CONSIDER_1",
+          "condition": {
+            "math": [
+              "n_mie_beacon_slot == 1"
+            ]
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_beacon_worn_now_1 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_CONSIDER_2",
+          "condition": {
+            "math": [
+              "n_mie_beacon_slot == 2"
+            ]
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_beacon_worn_now_2 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_CONSIDER_3",
+          "condition": {
+            "math": [
+              "n_mie_beacon_slot == 3"
+            ]
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_beacon_worn_now_3 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_CONSIDER_4",
+          "condition": {
+            "math": [
+              "n_mie_beacon_slot == 4"
+            ]
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_beacon_worn_now_4 = 1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_MIE_BEACON_CONSIDER_5",
+          "condition": {
+            "math": [
+              "n_mie_beacon_slot == 5"
+            ]
+          },
+          "effect": [
+            {
+              "math": [
+                "u_mie_beacon_worn_now_5 = 1"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

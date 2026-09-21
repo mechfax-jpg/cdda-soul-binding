@@ -1,0 +1,28 @@
+[
+  {
+    "type": "item_group",
+    "id": "classless_unrestricted_tier_1",
+    "subtype": "distribution",
+    "entries": [
+      {
+        "item": "spell_scroll_mie_bind_essence",
+        "prob": 28
+      },
+      {
+        "item": "page_mie_soul_brand",
+        "prob": 12
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "classless_unrestricted_tier_2",
+    "subtype": "distribution",
+    "entries": [
+      {
+        "item": "book_mie_soulbound_codex",
+        "prob": 12
+      }
+    ]
+  }
+]

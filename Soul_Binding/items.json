@@ -1,0 +1,83 @@
+[
+  {
+    "type": "ITEM",
+    "subtypes": [ "BOOK" ],
+    "copy-from": "spell_scroll",
+    "id": "spell_scroll_mie_bind_essence",
+    "//": "Classless vestment-binding ritual",
+    "name": {
+      "str": "Scroll of Bind Essence",
+      "str_pl": "Scrolls of Bind Essence"
+    },
+    "description": "A tightly rolled scroll; on the back there is a large stamped RESTRICTED printed-over text detailing the return of this study material, detailing that the spells within cannot be cast and are for study only. A card on the back of the scroll glued onto the parchment has names and dates blotted out. The note details that the danger of this ritual is too much for anyone to attempt after the death of a student.",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "use_action": {
+      "type": "learn_spell",
+      "spells": [
+        "mie_bind_essence"
+      ]
+    }
+  },
+  {
+    "id": "page_mie_soul_brand",
+    "type": "ITEM",
+    "name": {
+      "str": "a torn, stained page",
+      "str_pl": "torn, stained pages"
+    },
+    "description": "A single page, ripped from some larger binding. looks like a magical seal with some runic markings and what looks to be a note on the back: STOP. This is a ritual you do not want to be using! Common-day enchanting is far safer and more effective! If you are reading this, then I have likely failed to hide this well enough. There is a reason this is considered taboo by the council. Know that the pain of this ritual knows no limit, and you will cripple yourself forever in its use. The promise of power and glory of old is a myth! You are only creating a void in your body and soul that no enchantment or binding can ever truly fix. You are not making yourself more powerful! You are not binding items to yourself! You are binding yourself to the item! Again, STOP! Do not follow the footsteps of fools like Jerry and bind a part of your soul into a pair of fucking shoes and die because you thought it would be funny! DO NOT BE FOOLISH! I strongly suggest you come and talk with me rather than attempt this horrible outdated ritual... -Archmage Malius",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "price": "10 USD",
+    "price_postapoc": "0 USD",
+    "material": [
+      "paper"
+    ],
+    "looks_like": "paper",
+    "symbol": "?",
+    "color": "brown",
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "mie_soul_brand",
+      "no_fail": true,
+      "level": 1,
+      "need_worn": false
+    }
+  },
+  {
+    "id": "book_mie_soulbound_codex",
+    "type": "ITEM",
+    "subtypes": [
+      "BOOK"
+    ],
+    "category": "manuals",
+    "name": {
+      "str": "The Soulbound Codex",
+      "str_pl": "copies of The Soulbound Codex"
+    },
+    "description": "A heavy, deliberate treatise on binding soul essence into worn things, what can be done, and what it costs. The cover shows a human palm, marked with a small circular brand. The text below it is clinical and details how enchantment of the past was done and how barbaric it was, describing the working itself in patient detail. suggesting the price paid to further the art of enchantment we know today and the horrible price that had to be paid by anyone who practiced it. It seems the page with the ritual has been cut out. Whoever removed it left a stapled page in its place: To whom it may concern, This ancient and barbaric practice has been labeled taboo by the council for the last 200 years; you may study the spellwork, but the branding ritual is forbidden. Know that some things are better left in the past. -Archmage Malius. (Studying this book teaches Bind Essence and trains spellcraft, but the working itself will not answer until you bear the brand.)",
+    "weight": "480 g",
+    "volume": "300 ml",
+    "price": "50 USD",
+    "price_postapoc": "25 USD",
+    "material": [
+      "paper"
+    ],
+    "looks_like": "cookbook",
+    "symbol": "?",
+    "color": "light_blue",
+    "read_skill": "spellcraft",
+    "required_level": 2,
+    "max_level": 20,
+    "intelligence": 9,
+    "time": "40 m",
+    "read_fun": 0,
+    "use_action": {
+      "type": "learn_spell",
+      "spells": [
+        "mie_bind_essence"
+      ]
+    }
+  }
+]

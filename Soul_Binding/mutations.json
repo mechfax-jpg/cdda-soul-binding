@@ -1,0 +1,24 @@
+[
+  {
+    "type": "mutation",
+    "id": "MIE_BOUND",
+    "name": { "str": "Bound Vestments" },
+    "points": 0,
+    "description": "Essence bound into your clothing is altering how your body and gear behave.",
+    "valid": false,
+    "purifiable": false,
+    "player_display": true,
+    "enchantments": [ "ench_mie_bound" ]
+  },
+  {
+    "type": "mutation",
+    "id": "MIE_FEATHER_FALL",
+    "name": { "str": "Feathered Fall" },
+    "points": 0,
+    "description": "Essence bound into your clothing lets you land as if the ground were rushing up to meet you gently.",
+    "valid": false,
+    "purifiable": false,
+    "player_display": true,
+    "flags": [ "FEATHER_FALL" ]
+  }
+]

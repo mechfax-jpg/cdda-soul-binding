@@ -1,0 +1,329 @@
+[
+  {
+    "type": "enchantment",
+    "id": "ench_mie_bound",
+    "hit_you_effect": [],
+    "condition": "ALWAYS",
+    "has": "WORN",
+    "values": [
+      {
+        "value": "STRENGTH",
+        "add": {
+          "math": [
+            "u_mie_pfx_str + u_mie_sfx_str + (u_mie_eff_warrior * 6) - (u_mie_eff_mage * 3)"
+          ]
+        }
+      },
+      {
+        "value": "DEXTERITY",
+        "add": {
+          "math": [
+            "u_mie_pfx_dex + u_mie_sfx_dex + (u_mie_eff_warrior * 6) + (u_mie_eff_ranger * 6)"
+          ]
+        }
+      },
+      {
+        "value": "INTELLIGENCE",
+        "add": {
+          "math": [
+            "u_mie_pfx_int + u_mie_sfx_int - (u_mie_eff_warrior * 3) + (u_mie_eff_mage * 7)"
+          ]
+        }
+      },
+      {
+        "value": "PERCEPTION",
+        "add": {
+          "math": [
+            "u_mie_pfx_per + u_mie_sfx_per - (u_mie_eff_warrior * 3) + (u_mie_eff_mage * 7) + (u_mie_eff_ranger * 7)"
+          ]
+        }
+      },
+      {
+        "value": "MAX_STAMINA",
+        "add": {
+          "math": [
+            "u_mie_pfx_stamina"
+          ]
+        }
+      },
+      {
+        "value": "REGEN_STAMINA",
+        "multiply": {
+          "math": [
+            "u_mie_pfx_stamina_regen"
+          ]
+        }
+      },
+      {
+        "value": "MAX_HP",
+        "add": {
+          "math": [
+            "u_mie_pfx_vitality + (u_mie_eff_warrior * 40)"
+          ]
+        }
+      },
+      {
+        "value": "REGEN_HP",
+        "add": {
+          "math": [
+            "u_mie_pfx_mending / 100"
+          ]
+        }
+      },
+      {
+        "value": "CARRY_WEIGHT",
+        "add": {
+          "math": [
+            "u_mie_pfx_gravity"
+          ]
+        }
+      },
+      {
+        "value": "FALL_DAMAGE",
+        "multiply": {
+          "math": [
+            "u_mie_pfx_fall > 0 ? -1 : 0"
+          ]
+        }
+      },
+      {
+        "value": "REGEN_MANA",
+        "add": {
+          "math": [
+            "u_mie_pfx_manaregen - (u_mie_eff_warrior * 3) + (u_mie_eff_mage * 15) - (u_mie_eff_ranger * 3)"
+          ]
+        }
+      },
+      {
+        "value": "LUMINATION",
+        "add": {
+          "math": [
+            "u_mie_pfx_radiance"
+          ]
+        }
+      },
+      {
+        "value": "STEALTH_MODIFIER",
+        "add": {
+          "math": [
+            "u_mie_pfx_shadow"
+          ]
+        }
+      },
+      {
+        "value": "KNOCKBACK_RESIST",
+        "add": {
+          "math": [
+            "u_mie_pfx_knockback"
+          ]
+        }
+      },
+      {
+        "value": "SPEED",
+        "add": {
+          "math": [
+            "u_mie_sfx_speed + (u_mie_eff_ranger * 22)"
+          ]
+        }
+      },
+      {
+        "value": "KNOCKDOWN_RESIST",
+        "add": {
+          "math": [
+            "u_mie_sfx_knockdown"
+          ]
+        }
+      },
+      {
+        "value": "MAX_MANA",
+        "add": {
+          "math": [
+            "u_mie_sfx_mana + (u_mie_eff_mage * 3000)"
+          ]
+        }
+      },
+      {
+        "value": "CLIMATE_CONTROL_HEAT",
+        "add": {
+          "math": [
+            "u_mie_pfx_aura"
+          ]
+        }
+      },
+      {
+        "value": "CLIMATE_CONTROL_CHILL",
+        "add": {
+          "math": [
+            "u_mie_pfx_aura"
+          ]
+        }
+      },
+      {
+        "value": "RANGED_DAMAGE",
+        "add": {
+          "math": [
+            "u_mie_eff_ranger * 6"
+          ]
+        }
+      },
+      {
+        "value": "WEAPON_DISPERSION",
+        "add": {
+          "math": [
+            "u_mie_eff_ranger * -30"
+          ]
+        }
+      },
+      {
+        "value": "PAIN_PENALTY_MOD_STR",
+        "multiply": {
+          "math": [
+            "-1 * u_mie_pfx_painresist"
+          ]
+        }
+      },
+      {
+        "value": "PAIN_PENALTY_MOD_DEX",
+        "multiply": {
+          "math": [
+            "-1 * u_mie_pfx_painresist"
+          ]
+        }
+      },
+      {
+        "value": "PAIN_PENALTY_MOD_INT",
+        "multiply": {
+          "math": [
+            "-1 * u_mie_pfx_painresist"
+          ]
+        }
+      },
+      {
+        "value": "PAIN_PENALTY_MOD_PER",
+        "multiply": {
+          "math": [
+            "-1 * u_mie_pfx_painresist"
+          ]
+        }
+      },
+      {
+        "value": "PAIN_PENALTY_MOD_SPEED",
+        "multiply": {
+          "math": [
+            "-1 * u_mie_pfx_painresist"
+          ]
+        }
+      },
+      {
+        "value": "FOOTSTEP_NOISE",
+        "multiply": {
+          "math": [
+            "-1 * u_mie_pfx_hush"
+          ]
+        }
+      }
+    ],
+    "skills": [
+      {
+        "value": "melee",
+        "add": {
+          "math": [
+            "u_mie_sfx_skill_melee + (u_mie_eff_warrior * 7) - (u_mie_eff_mage * 7)"
+          ]
+        }
+      },
+      {
+        "value": "dodge",
+        "add": {
+          "math": [
+            "u_mie_sfx_skill_dodge + (u_mie_eff_warrior * 7) - (u_mie_eff_mage * 7)"
+          ]
+        }
+      },
+      {
+        "value": "gun",
+        "add": {
+          "math": [
+            "u_mie_sfx_skill_gun - (u_mie_eff_warrior * 7)"
+          ]
+        }
+      },
+      {
+        "value": "archery",
+        "add": {
+          "math": [
+            "-1 * u_mie_eff_warrior * 7"
+          ]
+        }
+      },
+      {
+        "value": "firstaid",
+        "add": {
+          "math": [
+            "u_mie_sfx_skill_firstaid"
+          ]
+        }
+      },
+      {
+        "value": "survival",
+        "add": {
+          "math": [
+            "u_mie_sfx_skill_survival"
+          ]
+        }
+      },
+      {
+        "value": "spellcraft",
+        "add": {
+          "math": [
+            "-1 * u_mie_eff_ranger * 7"
+          ]
+        }
+      }
+    ],
+    "encumbrance_modifier": [
+      {
+        "part": "all",
+        "add": {
+          "math": [
+            "u_mie_sfx_unburden * -1"
+          ]
+        }
+      }
+    ],
+    "incoming_damage_mod": [
+      {
+        "type": "cut",
+        "add": {
+          "math": [
+            "-1 * u_mie_sfx_armor"
+          ]
+        }
+      },
+      {
+        "type": "bash",
+        "add": {
+          "math": [
+            "-0.8 * u_mie_sfx_armor"
+          ]
+        }
+      },
+      {
+        "type": "stab",
+        "add": {
+          "math": [
+            "-0.625 * u_mie_sfx_armor"
+          ]
+        }
+      },
+      {
+        "type": "bullet",
+        "add": {
+          "math": [
+            "-0.25 * u_mie_sfx_armor"
+          ]
+        }
+      }
+    ]
+  }
+]
